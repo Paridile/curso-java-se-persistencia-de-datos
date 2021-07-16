@@ -17,7 +17,7 @@ public class Conexion {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:6033/mensajes_app?serverTimezone=UTC","root","");
-            System.out.println(connection != null ? "Conexion realizada con exito" : "Hubo un problema al realizar la conexion");            
+            //System.out.println(connection != null ? "Conexion realizada con exito" : "Hubo un problema al realizar la conexion");            
         } catch(Exception e) {
             e.printStackTrace();
         } finally {           
