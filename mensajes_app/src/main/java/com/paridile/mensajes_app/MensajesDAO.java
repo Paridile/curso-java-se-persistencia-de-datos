@@ -7,7 +7,9 @@ package com.paridile.mensajes_app;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -35,7 +37,28 @@ public class MensajesDAO {
     }
     
     public static void leerMensajesDB() {
-  
+        Conexion db_connect = new Conexion();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try(Connection conexion = db_connect.getConnection()) {
+            try {
+               String query = "SELECT * FROM mensajes";
+               ps=conexion.prepareStatement(query);               
+               rs = ps.executeQuery();
+               while(rs.next()) {
+                   System.out.println("Id: " + rs.getInt("id_mensajes"));
+                   System.out.println("Mensaje: " + rs.getString("mensaje"));
+                   System.out.println("Autor: " + rs.getString("autor"));
+                   System.out.println("Fecha: " + rs.getString("fecha_mensaje") + "\n");
+                   
+               }
+            }catch(SQLException e) {                
+                System.out.println("Ha ocurrido un error al leer su mensaje");
+                e.printStackTrace();
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
     }
     
     public static void borrarMensajeDB(int id_mensaje) {
