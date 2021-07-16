@@ -19,7 +19,8 @@ public class Inicio {
         int opc = -1;
         String[] botones = {
             "1. Ver gatos",
-            "2. Salir"
+            "2. Ver favoritos",
+            "3.. Salir"
         };
         do{
             String opcion = (String)JOptionPane.showInputDialog(null,"Gatos java","Menu principal",JOptionPane.INFORMATION_MESSAGE,null,botones,botones[0]);
@@ -37,6 +38,10 @@ public class Inicio {
                         Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
+                    break;
+                case 1:
+                    Gatos gato = new Gatos();
+                    GatosService.verFavorito(gato.getApiKey());
                     break;
 
                 default:
