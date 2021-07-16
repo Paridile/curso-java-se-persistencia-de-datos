@@ -5,6 +5,9 @@
  */
 package com.paridile.mensajes_app.gatos_app;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,8 +30,15 @@ public class Inicio {
             }
             switch(opc) {
                 case 0:
-                    GatosService.verGatos();
+                {
+                    try {
+                        GatosService.verGatos();
+                    } catch (IOException ex) {
+                        Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
                     break;
+
                 default:
                     break;
             }

@@ -10,16 +10,16 @@ package com.paridile.mensajes_app.gatos_app;
  * @author j.rios.diaz.de.leon
  */
 public class Gatos {
-    private int id;
+    private String id;
     private String url;
-    private final String apiKey = "55d1f916-c99e-468e-a7e9-667138257e9b";
+    private String apiKey = "55d1f916-c99e-468e-a7e9-667138257e9b";
     private String image;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -37,6 +37,14 @@ public class Gatos {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getApiKey() {
+        return apiKey;
+    }
+
+    public void setApiKey(String apiKey) {
+        this.apiKey = apiKey;
     }
     
     
