@@ -5,12 +5,19 @@
  */
 package com.paridile.mensajes_app;
 
+import java.sql.Connection;
+
 /**
  *
  * @author j.rios.diaz.de.leon
  */
 public class Inicio {
     public static void main(String[] args) {
-        System.out.println("Hello world");
+        Conexion conexion = new Conexion();        
+        try(Connection cnx = conexion.getConnection()) {
+        
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 }
