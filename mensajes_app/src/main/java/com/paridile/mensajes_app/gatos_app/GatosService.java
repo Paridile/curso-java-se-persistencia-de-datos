@@ -12,8 +12,10 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
@@ -85,6 +87,22 @@ public class GatosService {
     }
     
     public static void favoritoGato(Gatos gato) {
-        
+        try {
+            OkHttpClient client = new OkHttpClient().newBuilder()
+            .build();
+            MediaType mediaType = MediaType.parse("application/json");
+            RequestBody body = RequestBody.create(mediaType, 
+                    "{\r\n    \"image_id\": \"" + gato.getId() + "\"\r\n}");
+            
+            Request request = new Request.Builder()
+               .url("https://api.thecatapi.com/v1/favourites")
+               .method("POST", body)
+               .addHeader("x-api-key", gato.getApiKey())
+               .addHeader("Content-Type", "application/json")
+               .build();
+            Response response = client.newCall(request).execute();
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 }
